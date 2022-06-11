@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Applications from './pages/Applications';
 
-import Home from './pages/Home';
+import Reminders from './pages/Reminders';
 
 function App() {
   
@@ -20,7 +20,7 @@ function App() {
             </div>
             <div className='row'>
               <div className='col-sm-12'>
-                <Home />
+                <Reminders />
               </div>
             </div>
           </div>

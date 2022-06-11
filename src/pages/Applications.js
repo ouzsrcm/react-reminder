@@ -29,7 +29,6 @@ function Applications() {
                                         http_basic_auth_password: {app.http_basic_auth_password}<br />
                                     </small>
                                 </p>
-                                <a className='btn btn-primary'>Details</a>
                             </div>
                         </div>
                     </div>
