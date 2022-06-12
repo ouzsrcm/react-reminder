@@ -22,11 +22,6 @@ function Reminders (){
         }
         fetchReminders()
     }, [])
-
-    function handleClick(){
-        console.log('clicked')
-    }
-
     return (
         <>
             <h4 className="mb-1 mt-1">{users?.name} Reminders</h4>
