@@ -8,7 +8,7 @@ class CreateReminder extends Component {
     constructor({props}){
         super(props);
         this.state ={
-            title: null,
+            Title: null,
             Date: null,
             Time: null,
             TimeZone:null,
@@ -16,11 +16,20 @@ class CreateReminder extends Component {
         }
     }
 
-    handleCreate(e){
+    handleSubmit= (e)=>{
+        var state = this.state
         console.log(this.state)
+        var data = {
+            title: state.Title,
+            date_tz: state.Date,
+            time_tz: state.Time,
+            timezone: state.TimeZone?.value
+        }
+        console.log(data)
+        e.preventDefault();
     }
     
-    handleChangeTimeZone(e){
+    handleChangeTimeZone = (e) => {
         var timeZone = this.state.TimeZones.filter(x => x.value == e.target.value);
         if (timeZone == null)
             return;
@@ -46,12 +55,12 @@ class CreateReminder extends Component {
                 <div className="row">
                     <div className="col-md-6 col-sm-12 col-lg-6">
                         <div className="card">
-                            <form onSubmit={this.handleCreate.bind(this)} className="form">
+                            <form onSubmit={this.handleSubmit} className="form">
                                 <div className="card-body">
                                     <div className="mb-3">
                                         <label htmlFor="Title" className="form-label">Title</label>
                                         <input type="text" className="form-control" 
-                                            defaultValue={this.state.Time == null ? "" : this.state.Title } name="Title" id="Title" placeholder="Title" />
+                                            defaultValue={this.state.Title == null ? "" : this.state.Title } name="Title" id="Title" placeholder="Title" />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="Timezone" className="form-label">Timezone</label>
@@ -80,7 +89,7 @@ class CreateReminder extends Component {
                                             defaultValue={this.state.Time == null ? "" : this.state.Time } name="Time" id="Time" placeholder="Time" />
                                     </div>
                                     <div className="mb-3">
-                                        <button type="button" className="btn btn-primary">
+                                        <button type="submit" className="btn btn-primary">
                                             Create
                                         </button>
                                     </div>
