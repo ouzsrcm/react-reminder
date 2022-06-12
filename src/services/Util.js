@@ -5,8 +5,7 @@ const ServiceConfig = {
 };
 
 function GetTimeZones() {
-    var timeZones = require('../Common/timezones.json');
-    return timeZones;
+    return require('../Common/timezones.json');
 }
 
 export {

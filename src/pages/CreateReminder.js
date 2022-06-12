@@ -33,7 +33,7 @@ class CreateReminder extends Component {
     }
 
     async getTimeZones(){
-        const timeZones = await GetTimeZones();
+        const timeZones = GetTimeZones();
         this.setState({
             TimeZones: timeZones
         })
