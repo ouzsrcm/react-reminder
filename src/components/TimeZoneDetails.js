@@ -1,7 +1,6 @@
 
 
 function TimeZoneDetails({props}){
-    console.log(props);
     if(props == null)
         return(<></>)
     else
