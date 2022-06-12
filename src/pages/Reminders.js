@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import { GetUserInfo } from "../services/User";
 import {GetReminders} from '../services/Reminders'
 
@@ -43,6 +44,7 @@ function Reminders (){
                                             updated_at: {reminder.updated_at}<br />
                                         </small>
                                     </p>
+                                    <Link to={`/reminders/${reminder.id}`} className='btn btn-primary'>View</Link>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 import Applications from "../pages/Applications";
 import Reminders from "../pages/Reminders";
 import CreateReminder from "../pages/CreateReminder";
+import ReminderDetails from "../pages/ReminderDetails";
 import NotFound from "../pages/NotFound";
 
 const CommonRoutes = [
@@ -15,6 +16,10 @@ const CommonRoutes = [
     {
         path: '/create',
         element: <CreateReminder />
+    },
+    {
+        path: '/reminders/:id',
+        element: <ReminderDetails />
     },
     {
         path: '*',
