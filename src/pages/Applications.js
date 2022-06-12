@@ -21,7 +21,7 @@ function Applications() {
                     <div className='col-sm-4 mb-3' key={index}>
                         <div className='card'>
                             <div className='card-body'>
-                                <h5 className='card-title'>{app.name}</h5>
+                                <h5 className='card-title'><small>#{app.id}</small> - {app.name}</h5>
                                 <p className='card-text'>
                                     <small>
                                         url: {app.webhook_url}<br />

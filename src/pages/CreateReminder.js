@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import TimeZoneDetails from '../components/TimeZoneDetails';
 import {GetTimeZones} from '../services/Util';
+import{ CreateReminder as ReminderCreationService } from '../services/Reminders';
 
 
 class CreateReminder extends Component {
@@ -12,21 +13,28 @@ class CreateReminder extends Component {
             Date: null,
             Time: null,
             TimeZone:null,
-            TimeZones: []
+            TimeZones: [],
+            CreationErrors: null,
+            CreationSuccess: null
         }
     }
 
     handleSubmit= (e)=>{
+        e.preventDefault();
         var state = this.state
-        console.log(this.state)
         var data = {
             title: state.Title,
             date_tz: state.Date,
             time_tz: state.Time,
-            timezone: state.TimeZone?.value
+            timezone: state.TimeZone?.utc[0]
         }
-        console.log(data)
-        e.preventDefault();
+        console.log(data);
+        ReminderCreationService(data).then(res => {
+            this.setState({
+                CreationErrors: res.message,
+            })
+            console.log(res)
+        })
     }
     
     handleChangeTimeZone = (e) => {
@@ -60,6 +68,7 @@ class CreateReminder extends Component {
                                     <div className="mb-3">
                                         <label htmlFor="Title" className="form-label">Title</label>
                                         <input type="text" className="form-control" 
+                                            onChange={(e) => this.setState({Title: e.target.value})}
                                             defaultValue={this.state.Title == null ? "" : this.state.Title } name="Title" id="Title" placeholder="Title" />
                                     </div>
                                     <div className="mb-3">
@@ -81,11 +90,13 @@ class CreateReminder extends Component {
                                     <div className="mb-3">
                                         <label htmlFor="Date" className="form-label">Date</label>
                                         <input type="Date" className="form-control" 
+                                            onChange={(e) => this.setState({Date: e.target.value})}
                                             defaultValue={this.state.Date == null ? "" : this.state.Date } name="Date" id="Date" placeholder="Date" />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="Time" className="form-label">Time</label>
                                         <input type="Time" className="form-control" 
+                                            onChange={(e) => this.setState({Time: e.target.value})}
                                             defaultValue={this.state.Time == null ? "" : this.state.Time } name="Time" id="Time" placeholder="Time" />
                                     </div>
                                     <div className="mb-3">
@@ -96,6 +107,10 @@ class CreateReminder extends Component {
                                 </div>
                             </form>
                         </div>
+                    </div>
+                    <div className="col-md-6 col-sm-12 col-lg-6">
+                        {this.state.CreationErrors && <div className="alert alert-danger">{this.state.CreationErrors}</div>}
+                        {!this.state.CreationErrors && <div className="alert alert-success">...</div>}
                     </div>
                 </div>
             </>

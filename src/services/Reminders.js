@@ -38,13 +38,15 @@ function CreateReminder(data){
     if (data == null)
         return;
 
-    return fetch(config.APIURL + '/reminders', {
+    return fetch(config.APIURL + '/applications/141/reminders', {
         'method': 'POST',
-        headers: defaultHeaders
+        headers: defaultHeaders,
+        body: JSON.stringify(data)
     }).then(response => response.json());
 }
 
 export {
     GetReminders,
-    GetReminder
+    GetReminder,
+    CreateReminder
 }
