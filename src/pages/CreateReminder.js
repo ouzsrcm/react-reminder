@@ -6,17 +6,14 @@ import{ CreateReminder as ReminderCreationService } from '../services/Reminders'
 
 class CreateReminder extends Component {
 
-    constructor({props}){
-        super(props);
-        this.state ={
-            Title: null,
-            Date: null,
-            Time: null,
-            TimeZone:null,
-            TimeZones: [],
-            CreationErrors: null,
-            CreationSuccess: null
-        }
+    state = {
+        Title: null,
+        Date: null,
+        Time: null,
+        TimeZone:null,
+        TimeZones: [],
+        CreationErrors: null,
+        CreationSuccess: null
     }
 
     handleSubmit= (e)=>{
